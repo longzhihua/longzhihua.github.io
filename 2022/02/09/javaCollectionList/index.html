@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://longzhihua.github.io">
-  <title>java知识思维导图 | 程序员杂记</title>
+  <title>Java 集合 - List | 程序员杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java 知识思维导图，建立自己的Java知识体系。">
+  <meta name="description" content="关于ArrayList的问题：   ArrayList 底层是使用动态数组实现的，也就是在 dump 中一整块连续的内存地址存放。 因为实现了随机访问，效率可能是O(1)。按内容查询效率为 O(n)。 新增&#x2F;修改&#x2F;删除效率是O(n)。 使用 add(E element) 方法新增，效率是O(1)，因为只需要在数组最末端添加就行，但是如果是add(int index)效率则是O(index -1)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java知识思维导图">
-<meta property="og:url" content="http://longzhihua.github.io/2022/01/26/java-mind/index.html">
+<meta property="og:title" content="Java 集合 - List">
+<meta property="og:url" content="http://longzhihua.github.io/2022/02/09/javaCollectionList/index.html">
 <meta property="og:site_name" content="程序员杂记">
-<meta property="og:description" content="Java 知识思维导图，建立自己的Java知识体系。">
+<meta property="og:description" content="关于ArrayList的问题：   ArrayList 底层是使用动态数组实现的，也就是在 dump 中一整块连续的内存地址存放。 因为实现了随机访问，效率可能是O(1)。按内容查询效率为 O(n)。 新增&#x2F;修改&#x2F;删除效率是O(n)。 使用 add(E element) 方法新增，效率是O(1)，因为只需要在数组最末端添加就行，但是如果是add(int index)效率则是O(index -1)">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-26T08:51:33.000Z">
-<meta property="article:modified_time" content="2022-01-27T06:54:08.018Z">
+<meta property="article:published_time" content="2022-02-09T09:08:51.000Z">
+<meta property="article:modified_time" content="2022-02-09T09:12:47.744Z">
 <meta property="article:author" content="longzh">
-<meta property="article:tag" content="javase">
+<meta property="article:tag" content="集合">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="程序员杂记" type="application/atom+xml">
@@ -62,11 +62,13 @@
 			
 				<li><a href="/#">home</a></li>
 	        
-				<li><a href="/#">spring</a></li>
+				<li><a href="/categories/javase/#">javase</a></li>
 	        
-				<li><a href="/categories/java/#">javase</a></li>
+				<li><a href="/categories/spring/#">spring</a></li>
 	        
 				<li><a href="/#">diary</a></li>
+	        
+				<li><a href="/#">软件设计师</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,6 +124,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,13 +140,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/#">home</a></li>
+					<li style="width: 20%"><a href="/#">home</a></li>
 		        
-					<li style="width: 25%"><a href="/#">spring</a></li>
+					<li style="width: 20%"><a href="/categories/javase/#">javase</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/java/#">javase</a></li>
+					<li style="width: 20%"><a href="/categories/spring/#">spring</a></li>
 		        
-					<li style="width: 25%"><a href="/#">diary</a></li>
+					<li style="width: 20%"><a href="/#">diary</a></li>
+		        
+					<li style="width: 20%"><a href="/#">软件设计师</a></li>
 		        
 				</ul>
 			</nav>
@@ -157,31 +163,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-java-mind" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javaCollectionList" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      java知识思维导图
+      Java 集合 - List
     </h1>
   
 
         
-        <a href="/2022/01/26/java-mind/" class="archive-article-date">
-  	<time datetime="2022-01-26T08:51:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-26</time>
+        <a href="/2022/02/09/javaCollectionList/" class="archive-article-date">
+  	<time datetime="2022-02-09T09:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java 知识思维导图，建立自己的Java知识体系。</p>
+        <blockquote>
+<p>关于ArrayList的问题：</p>
+</blockquote>
+<ol>
+<li>ArrayList 底层是使用动态数组实现的，也就是在 dump 中一整块连续的内存地址存放。</li>
+<li>因为实现了随机访问，效率可能是O(1)。按内容查询效率为 O(n)。</li>
+<li>新增/修改/删除效率是O(n)。</li>
+<li>使用 add(E element) 方法新增，效率是O(1)，因为只需要在数组最末端添加就行，但是如果是add(int index)效率则是O(index -1)。</li>
+<li>数组是不能拓展容量的，所谓的动态数组就是不断的创建新的数组，将之前数组里面的数据放到新容量的数组中。</li>
+<li>实现删除的功能也是复制删除元素位置后一位到删除位置前一位的全部元素到新数组中。</li>
+<li>修改则是定位到指定位置，将数据引用地址替换成新元素引用地址。</li>
+<li>在并发的情况下使用ArrayList，出现的问题会是在扩容时导致无法扩展出能存放全部元素的容量，导致OutOfMemoryError。</li>
+</ol>
 <span id="more"></span>
-<!-- ![Java知识思维导图](/picture/java-mind.png) -->
-<iframe id="embed_dom" name="embed_dom" frameborder="0" style="display:block;width:1024px; height:1080px;" src="https://www.processon.com/embed/61f10d0963768967ff0d0d61"></iframe>
-
+<blockquote>
+<p>ArrayList：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">package java.util;</span><br><span class="line"></span><br><span class="line">## 实现了随机、赋值的功能</span><br><span class="line">public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt;, RandomAccess, Cloneable, java.io.Serializable</span><br><span class="line"></span><br><span class="line">## 默认容量</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line"></span><br><span class="line">## 空对象数组</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = new Object[0];</span><br><span class="line"></span><br><span class="line">## 默认容量空元素数组</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = new Object[0];</span><br><span class="line"></span><br><span class="line">## 元数据</span><br><span class="line">private transient Object[] elementData;</span><br><span class="line"></span><br><span class="line">## 大小</span><br><span class="line">private int size;</span><br><span class="line"></span><br><span class="line">## 数组最大容量（int 是 2,147,483,647，但是数组本身占用8个字节。）</span><br><span class="line">private static final int MAX_ARRAY_SIZE = 2147483639;</span><br><span class="line"></span><br><span class="line">## 创建指定大小的数组容器</span><br><span class="line">public ArrayList(int initialCapacity) &#123;</span><br><span class="line">    if (initialCapacity &gt; 0) &#123;</span><br><span class="line">        this.elementData = new Object[initialCapacity];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (initialCapacity != 0) &#123;</span><br><span class="line">            throw new IllegalArgumentException(&quot;Illegal Capacity: &quot; + initialCapacity);</span><br><span class="line">        &#125;</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 默认创建的数组大小为空</span><br><span class="line">public ArrayList() &#123;</span><br><span class="line">    this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">## 其他集合转换ArrayList集合</span><br><span class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    this.elementData = c.toArray();</span><br><span class="line">    if ((this.size = this.elementData.length) != 0) &#123;</span><br><span class="line">        if (this.elementData.getClass() != Object[].class) &#123;</span><br><span class="line">            // 使用 copyOf() 将数据复制一份</span><br><span class="line">            this.elementData = Arrays.copyOf(this.elementData, this.size, Object[].class);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        this.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 检查容器边界并拓展容器大小</span><br><span class="line">public void ensureCapacity(int minCapacity) &#123;</span><br><span class="line">    // 检查大于初始容量大小，当前需要的容量 大于之前容量，并且当前容量不为空</span><br><span class="line">    if (minCapacity &gt; this.elementData.length &amp;&amp; (this.elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA || minCapacity &gt; 10)) &#123;</span><br><span class="line">        ++this.modCount;</span><br><span class="line">                // 拓展</span><br><span class="line">        this.grow(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 拓展容量</span><br><span class="line">private Object[] grow(int minCapacity) &#123;</span><br><span class="line">        // 拓展容量方式为创建一个新容器</span><br><span class="line">    return this.elementData = Arrays.copyOf(this.elementData, this.newCapacity(minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 扩容</span><br><span class="line">private int newCapacity(int minCapacity) &#123;</span><br><span class="line">    int oldCapacity = this.elementData.length;</span><br><span class="line">        // 新容量为老容量的1.5倍大</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">    if (newCapacity - minCapacity &lt;= 0) &#123;</span><br><span class="line">        if (this.elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">            return Math.max(10, minCapacity);</span><br><span class="line">        &#125; else if (minCapacity &lt; 0) &#123;</span><br><span class="line">            throw new OutOfMemoryError();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return minCapacity;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return newCapacity - 2147483639 &lt;= 0 ? newCapacity : hugeCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 容量拓展上线检查</span><br><span class="line">private static int hugeCapacity(int minCapacity) &#123;</span><br><span class="line">    if (minCapacity &lt; 0) &#123;</span><br><span class="line">        throw new OutOfMemoryError();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        return minCapacity &gt; 2147483639 ? 2147483647 : 2147483639;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 重置某个值</span><br><span class="line">public E set(int index, E element) &#123;</span><br><span class="line">    Objects.checkIndex(index, this.size);</span><br><span class="line">    E oldValue = this.elementData(index);</span><br><span class="line">    this.elementData[index] = element;</span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 删除元素</span><br><span class="line">public E remove(int var1) &#123;</span><br><span class="line">    this.rangeCheck(var1);</span><br><span class="line">    ++this.modCount;</span><br><span class="line">    Object var2 = this.elementData(var1);</span><br><span class="line">    int var3 = this.size - var1 - 1;</span><br><span class="line">    if (var3 &gt; 0) &#123;</span><br><span class="line">        System.arraycopy(this.elementData, var1 + 1, this.elementData, var1, var3);</span><br><span class="line">    &#125;</span><br><span class="line">    this.elementData[--this.size] = null;</span><br><span class="line">    return var2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 内部类: ArrayListSpliterator </span><br><span class="line">用于 lambda forEach()时，检查容器是否被干扰，可以快速返回失败。</span><br><span class="line"></span><br><span class="line">## 内部类: Itr</span><br><span class="line">Itr对象表示顺序（线性）迭代器对象！</span><br><span class="line"></span><br><span class="line">## 内部类:ListItr</span><br><span class="line">ListItr对象表示一个增强型的顺序遍历迭代器，它支持从后向前遍历ArrayList中的元素。</span><br><span class="line"></span><br><span class="line">## 内部类:SubList</span><br><span class="line">每个SubList对象代表一个List的某个区间中的所有元素的集合。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>LinkedList:</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br></pre></td><td class="code"><pre><span class="line">## 实现了List集合的基础功能</span><br><span class="line">public class LinkedList&lt;E&gt; extends AbstractSequentialList&lt;E&gt; implements List&lt;E&gt;, Deque&lt;E&gt;, Cloneable, java.io.Serializable</span><br><span class="line"></span><br><span class="line">## 内部类：Node</span><br><span class="line">private static class Node&lt;E&gt; &#123;</span><br><span class="line"></span><br><span class="line">    // 元素</span><br><span class="line">    E item;</span><br><span class="line">    // 指向下一个Node的地址信息</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    // 指向前一个Node的地址信息</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line">    </span><br><span class="line">    // 带参构造器</span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        this.item = element;</span><br><span class="line">        this.next = next;</span><br><span class="line">        this.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 链表长度</span><br><span class="line">transient int size = 0;</span><br><span class="line"></span><br><span class="line">## 头节点</span><br><span class="line">transient Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line">## 尾节点</span><br><span class="line">transient Node&lt;E&gt; last;</span><br><span class="line"></span><br><span class="line">## 空构造</span><br><span class="line">public LinkedList() &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 根据索引获取某个节点</span><br><span class="line">Node&lt;E&gt; node(int index) &#123;</span><br><span class="line">    // assert isElementIndex(index);</span><br><span class="line">    // 减少遍历次数，链表本身维护了一个size。</span><br><span class="line">    if (index &lt; (size &gt;&gt; 1)) &#123;</span><br><span class="line">        // 创建 node ，存放第一个节点</span><br><span class="line">        Node&lt;E&gt; x = first;</span><br><span class="line">        // 从0 到 index 遍历</span><br><span class="line">        for (int i = 0; i &lt; index; i++)</span><br><span class="line">            // 向后遍历一直到获取到 index 的节点，效率低</span><br><span class="line">            x = x.next;</span><br><span class="line">        return x;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Node&lt;E&gt; x = last;</span><br><span class="line">        for (int i = size - 1; i &gt; index; i--)</span><br><span class="line">            // 向前遍历一直到获取到 index 的节点</span><br><span class="line">            x = x.prev;</span><br><span class="line">        return x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 设置最后一个节点</span><br><span class="line">void linkLast(E e) &#123;</span><br><span class="line">        // 创建一个节点，存放最后一个节点。</span><br><span class="line">    final Node&lt;E&gt; l = last;</span><br><span class="line">        // 创建新节点，设置为 最后一个节点</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;&gt;(l, e, null);    </span><br><span class="line">    // 将新节点 设置为 尾节点。</span><br><span class="line">    last = newNode;</span><br><span class="line">    // 如果尾节点为 null，那么将 新节点 赋值给 头节点，此时链表中只有一个节点，即 first 等于 last。</span><br><span class="line">    if (l == null)</span><br><span class="line">        first = newNode;</span><br><span class="line">    else</span><br><span class="line">        // 将尾节点的后置节点 设置为 新节点。</span><br><span class="line">        l.next = newNode;</span><br><span class="line">    // 链表大小 + 1</span><br><span class="line">    size++;</span><br><span class="line">    // 此列表在结构上被修改的次数</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 移除链表中的某个元素</span><br><span class="line">E unlink(Node&lt;E&gt; x) &#123;</span><br><span class="line">    // assert x != null;</span><br><span class="line">    final E element = x.item;</span><br><span class="line">    // 当前元素的后节点</span><br><span class="line">    final Node&lt;E&gt; next = x.next;</span><br><span class="line">    // 当前节点的前节点</span><br><span class="line">    final Node&lt;E&gt; prev = x.prev;</span><br><span class="line">    // 如果前节点为 null</span><br><span class="line">    if (prev == null) &#123;</span><br><span class="line">        // 将后节点 赋值给 头节点</span><br><span class="line">        first = next;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 将后节点 设置为 前节点的后节点</span><br><span class="line">        prev.next = next;</span><br><span class="line">        // 将原前节点设置为 null</span><br><span class="line">        x.prev = null;</span><br><span class="line">    &#125;</span><br><span class="line">    // 当后节点为 null</span><br><span class="line">    if (next == null) &#123;</span><br><span class="line">        // 将前节点 赋值给 尾节点</span><br><span class="line">        last = prev;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 将前节点 设置为后节点的前节点</span><br><span class="line">        next.prev = prev;</span><br><span class="line">        // 将原节点的后节点设置成 null</span><br><span class="line">        x.next = null;</span><br><span class="line">    &#125;</span><br><span class="line">    // 原元素内容设置成 null，便于内存回收</span><br><span class="line">    x.item = null;</span><br><span class="line">    // 链表长度 减一</span><br><span class="line">    size--;</span><br><span class="line">    // 操作次数加一</span><br><span class="line">    modCount++;</span><br><span class="line">    // 返回移除的元素内容</span><br><span class="line">    return element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 移除当前节点的后一个节点</span><br><span class="line">private E unlinkLast(Node&lt;E&gt; l) &#123;</span><br><span class="line">    // assert l == last &amp;&amp; l != null;</span><br><span class="line">    // 存放当前节点元素</span><br><span class="line">    final E element = l.item;</span><br><span class="line">    // 存放当前节点的前节点</span><br><span class="line">    final Node&lt;E&gt; prev = l.prev;</span><br><span class="line">    // 将当前节点元素的内容设置为 null</span><br><span class="line">    l.item = null;</span><br><span class="line">    // 将当前节点的前节点 设置为 null</span><br><span class="line">    l.prev = null; // help GC</span><br><span class="line">    // 将 最后一个节点设置为 当前节点的前节点</span><br><span class="line">    last = prev;</span><br><span class="line">    if (prev == null)</span><br><span class="line">        first = null;</span><br><span class="line">    else</span><br><span class="line">        // 前节点的后节点设置为 null</span><br><span class="line">        prev.next = null;</span><br><span class="line">    size--;</span><br><span class="line">    modCount++;</span><br><span class="line">    return element;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 清空集合</span><br><span class="line">public void clear() &#123;</span><br><span class="line">    // Clearing all of the links between nodes is &quot;unnecessary&quot;, but:</span><br><span class="line">    // - helps a generational GC if the discarded nodes inhabit</span><br><span class="line">    //   more than one generation</span><br><span class="line">    // - is sure to free memory even if there is a reachable Iterator</span><br><span class="line">        //  遍历链表，将所有的节点元素地址指向 null，便于GC回收</span><br><span class="line">    for (Node&lt;E&gt; x = first; x != null; ) &#123;</span><br><span class="line">        Node&lt;E&gt; next = x.next;</span><br><span class="line">        x.item = null;</span><br><span class="line">        x.next = null;</span><br><span class="line">        x.prev = null;</span><br><span class="line">        x = next;</span><br><span class="line">    &#125;</span><br><span class="line">    first = last = null;</span><br><span class="line">    size = 0;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">## 内部类 ListItr : 实现了双向链表向前/向后的迭代访问</span><br><span class="line">## 上一次执行 next() 或者 previos() 方法时的节点位置</span><br><span class="line">private Node&lt;E&gt; lastReturned;</span><br><span class="line"></span><br><span class="line">## 下一个节点</span><br><span class="line">private Node&lt;E&gt; next;</span><br><span class="line"></span><br><span class="line">## 下一个节点的位置</span><br><span class="line">private int nextIndex;</span><br><span class="line"></span><br><span class="line">## expectedModCount：期望版本号；modCount：目前最新版本号</span><br><span class="line">private int expectedModCount = modCount;</span><br><span class="line"></span><br><span class="line">## 取后节点</span><br><span class="line">public E next() &#123;</span><br><span class="line">    // 获取前检查链表是否被操作过</span><br><span class="line">    checkForComodification();</span><br><span class="line">    </span><br><span class="line">    if (!hasNext())</span><br><span class="line">        throw new NoSuchElementException();</span><br><span class="line"></span><br><span class="line">    // next 是当前节点，在上一次执行 next() 方法时被赋值的</span><br><span class="line">    // 第一次执行时，是在初始化迭代器的时候，next 被赋值的</span><br><span class="line">    lastReturned = next;</span><br><span class="line">    // next 是下一个节点了，为下次迭代做准备</span><br><span class="line">    next = next.next;</span><br><span class="line"></span><br><span class="line">    // 索引位置变化</span><br><span class="line">    nextIndex++;</span><br><span class="line">    return lastReturned.item;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 取前节点</span><br><span class="line">public E previous() &#123;</span><br><span class="line">    // 获取前检查链表是否被操作过</span><br><span class="line">    checkForComodification();</span><br><span class="line">    if (!hasPrevious())</span><br><span class="line">        throw new NoSuchElementException();</span><br><span class="line"></span><br><span class="line">    // next 为空场景：</span><br><span class="line">        1:说明是第一次迭代，取尾节点(last)</span><br><span class="line">        2:上一次操作把尾节点删除掉了</span><br><span class="line">    // next 不为空场景：说明已经发生过迭代了，直接取前一个节点即可(next.prev)</span><br><span class="line">    lastReturned = next = (next == null) ? last : next.prev;</span><br><span class="line"></span><br><span class="line">    // 索引位置变化</span><br><span class="line">    nextIndex--;</span><br><span class="line">    return lastReturned.item;&#125;</span><br><span class="line"></span><br><span class="line">## 内部类 DescendingIterator ：逆序迭代器</span><br><span class="line"></span><br><span class="line">## 内部类 LLSpliterator ：自定义的Spliterators.IteratorSpliterator，后者为Collection接口里的可分割迭代器</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关于 LinkedList 的问题：</p>
+</blockquote>
+<ol>
+<li>LinkedList 的底层实现是双向链表，每个节点都会存放指向前后节点的指针。并且维护了链表的长度，头节点，尾节点，操作次数。</li>
+<li>实现了Deque、Queue接口，可以实现队列、栈、双端队列的方式操作。<ul>
+<li>对于队列（先进先出）的操作可以归结以下三点：<ul>
+<li>在队尾添加元素（add、offer，两种方法的区别在于当队列满时，add会抛出IllegalStateException异常，offer只是返回false。）</li>
+<li>在头部删除元素（remove、poll，在队列为空时，会抛出NoSuchElementException异常。）</li>
+<li>查看头部元素（element、peek，在队列为空时，会返回null。）</li>
+</ul>
+</li>
+<li>对于栈（后进先出）的操作：<ul>
+<li>入栈（push，在头部添加元素，栈满时会抛出IllegalStateException异常。）</li>
+<li>出栈（pop，返回头部元素，并从栈中删除。如果栈为空，抛出NoSuchElementException异常。）</li>
+<li>查看头部元素（peek，栈为空时，返回null。）</li>
+<li><strong><em>First操作头部，</em></strong>Last操作尾部，与队列类似，区别在于栈为空或者满时处理不同。为空时，get<strong><em>()/remove</em></strong>()会抛出异常，peek<strong><em>()/poll</em></strong>()<br>返回null。为满时，add<strong><em>()抛出异常，offer</em></strong>()只返回null。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无随机访问，查找效率为O(n/2)。按照内容查找元素效率为O(n)。在两端添加、修改、删除效率为O(1)，在中间插入、删除效率为O(n)，仅修改效率为O(1)（原因是，无需重新排序，仅修改了节点的内容引用）。</li>
+<li>由内部类实现链表的向前/向后的节点遍历。</li>
+</ol>
 
       
 
@@ -220,18 +267,13 @@
     </div>
     <div class="article-info article-info-index">
       
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">javase</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
         		</li>
       		
 		</ul>
@@ -243,7 +285,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        			<a href="/categories/javase//" class="article-tag-list-link color2">javase</a>
         		</li>
       		
 		</ul>
@@ -297,7 +339,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2022/01/26/java-mind/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2022/02/09/javaCollectionList/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -312,8 +354,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2022/01/21/design-patterns/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">设计模式 - 七大设计原则</div>
+    <a href="/2022/02/09/javaInnerClass/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 内部类</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -440,7 +482,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">javase</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">base</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">xmind</a>
               </li>
             
             <div class="clearfix"></div>

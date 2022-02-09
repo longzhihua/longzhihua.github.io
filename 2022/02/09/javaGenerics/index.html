@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://longzhihua.github.io">
-  <title>设计模式 - 七大设计原则 | 程序员杂记</title>
+  <title>Java 泛型中E、T 、K、 V等的含义 | 程序员杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件设计七大原则：  开闭原则：对拓展开放，对修改关闭； — 接口，抽象类 里氏替换原则：子类可以拓展父类的功能，但是不能改变父类原有功能（尽量不要重写父类功能）； — 继承 依赖倒置原则：高层模块不应该依赖底层模块，两者都应该依赖其抽象；抽象应该依赖细节，细节应该依赖抽象；— 面向接口编程，而非面向实现编程 单一职责原则（单一功能原则）：一个类应该有且仅有一个引起它发生变化的原因，否则应该被拆分">
+  <meta name="description" content="泛型符号代表的含义:  1234567891011E - Element（在集合中使用，因为集合中存放的是元素）T - Type （Java 类）K - Key （键）V - Value （值）N - Number （数值类型）? - 通配符，表示不确定的 Java 类型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式 - 七大设计原则">
-<meta property="og:url" content="http://longzhihua.github.io/2022/01/21/design-patterns/index.html">
+<meta property="og:title" content="Java 泛型中E、T 、K、 V等的含义">
+<meta property="og:url" content="http://longzhihua.github.io/2022/02/09/javaGenerics/index.html">
 <meta property="og:site_name" content="程序员杂记">
-<meta property="og:description" content="软件设计七大原则：  开闭原则：对拓展开放，对修改关闭； — 接口，抽象类 里氏替换原则：子类可以拓展父类的功能，但是不能改变父类原有功能（尽量不要重写父类功能）； — 继承 依赖倒置原则：高层模块不应该依赖底层模块，两者都应该依赖其抽象；抽象应该依赖细节，细节应该依赖抽象；— 面向接口编程，而非面向实现编程 单一职责原则（单一功能原则）：一个类应该有且仅有一个引起它发生变化的原因，否则应该被拆分">
+<meta property="og:description" content="泛型符号代表的含义:  1234567891011E - Element（在集合中使用，因为集合中存放的是元素）T - Type （Java 类）K - Key （键）V - Value （值）N - Number （数值类型）? - 通配符，表示不确定的 Java 类型">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-01-21T08:22:53.000Z">
-<meta property="article:modified_time" content="2022-01-21T09:24:04.213Z">
+<meta property="article:published_time" content="2022-02-09T06:46:21.000Z">
+<meta property="article:modified_time" content="2022-02-09T08:37:09.906Z">
 <meta property="article:author" content="longzh">
-<meta property="article:tag" content="javase">
+<meta property="article:tag" content="base">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="程序员杂记" type="application/atom+xml">
@@ -62,11 +62,13 @@
 			
 				<li><a href="/#">home</a></li>
 	        
-				<li><a href="/#">spring</a></li>
+				<li><a href="/categories/javase/#">javase</a></li>
 	        
-				<li><a href="/categories/java/#">javase</a></li>
+				<li><a href="/categories/spring/#">spring</a></li>
 	        
 				<li><a href="/#">diary</a></li>
+	        
+				<li><a href="/#">软件设计师</a></li>
 	        
 			</ul>
 		</nav>
@@ -122,6 +124,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -136,13 +140,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/#">home</a></li>
+					<li style="width: 20%"><a href="/#">home</a></li>
 		        
-					<li style="width: 25%"><a href="/#">spring</a></li>
+					<li style="width: 20%"><a href="/categories/javase/#">javase</a></li>
 		        
-					<li style="width: 25%"><a href="/categories/java/#">javase</a></li>
+					<li style="width: 20%"><a href="/categories/spring/#">spring</a></li>
 		        
-					<li style="width: 25%"><a href="/#">diary</a></li>
+					<li style="width: 20%"><a href="/#">diary</a></li>
+		        
+					<li style="width: 20%"><a href="/#">软件设计师</a></li>
 		        
 				</ul>
 			</nav>
@@ -157,87 +163,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-design-patterns" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javaGenerics" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式 - 七大设计原则
+      Java 泛型中E、T 、K、 V等的含义
     </h1>
   
 
         
-        <a href="/2022/01/21/design-patterns/" class="archive-article-date">
-  	<time datetime="2022-01-21T08:22:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
+        <a href="/2022/02/09/javaGenerics/" class="archive-article-date">
+  	<time datetime="2022-02-09T06:46:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>软件设计七大原则：</p>
-<ul>
-<li>开闭原则：对拓展开放，对修改关闭； — 接口，抽象类</br></li>
-<li>里氏替换原则：子类可以拓展父类的功能，但是不能改变父类原有功能（尽量不要重写父类功能）； — 继承</br></li>
-<li>依赖倒置原则：高层模块不应该依赖底层模块，两者都应该依赖其抽象；抽象应该依赖细节，细节应该依赖抽象；— 面向接口编程，而非面向实现编程</br></li>
-<li>单一职责原则（单一功能原则）：一个类应该有且仅有一个引起它发生变化的原因，否则应该被拆分；— 功能聚合</br></li>
-<li>接口隔离原则：根据具体业务抽象出更加具体的接口； — 抽象聚合</br></li>
-<li>迪米特法则（最少知识原则）：只与你的直接朋友交流，不跟“陌生人”说话；如果两个软件实体无须直接通信，那么就不应当发生直接的相互调用，可以通过第三方转发该调用。其目的是降低类之间的耦合度，提高模块的相对独立性。</br></li>
-<li>合成复用原则（组合/聚合复用原则）：它要求在软件复用时，要尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。</br></li>
-</ul>
-<span id="more"></span>
-<hr>
-<p>二十三种设计模式：</p>
-<blockquote>
-<p>设计模式基本要素： 模式名称、别名、动机、问题、解决方案、效果、结构、模式角色、合作关系、实现方法、适用性、已知应用、例程、模式扩展和相关模式等，其中最关键的元素包括以下 4 个主要部分。</p>
+        <blockquote>
+<p>泛型符号代表的含义:</p>
 </blockquote>
-<ol>
-<li>模式名称</li>
-<li>问题描述</li>
-<li>解决方案</li>
-<li>实现效果</li>
-</ol>
-<p>设计模式分类：</p>
-<ul>
-<li>创建型模式：单例、原型、工厂方法、抽象工厂、建造者等</li>
-<li>结构型模式：代理、适配器、桥接、装饰、外观、享元、组合等</li>
-<li>行为型模式：模板方法、策略、命令、职责链、状态、观察者、中介者、迭代器、访问者、备忘录、解释器等</li>
-</ul>
-<p>设计模式作用范围：</p>
-<ul>
-<li>类模式：用于处理类与子类之间的关系，这些关系通过继承来建立，是静态的，在编译时刻便确立下来。比如：工厂方法、（类）适配器、模板方法、解释器等。</li>
-<li>对象模式：用于处理对象之间的关系，这些关系可以通过组合或聚合来实现，在运行时刻是可以变化的，更具动态性。比如：除了 类模式的四种，都是对象模式。</li>
-</ul>
-<hr>
-<ul>
-<li>单例（Singleton）模式：某个类只能生成一个实例，该类提供了一个全局访问点供外部获取该实例，其拓展是有限多例模式。</li>
-<li>原型（Prototype）模式：将一个对象作为原型，通过对其进行复制而克隆出多个和原型类似的新实例。</li>
-<li>工厂方法（Factory Method）模式：定义一个用于创建产品的接口，由子类决定生产什么产品。</li>
-<li>抽象工厂（AbstractFactory）模式：提供一个创建产品族的接口，其每个子类可以生产一系列相关的产品。</li>
-<li>建造者（Builder）模式：将一个复杂对象分解成多个相对简单的部分，然后根据不同需要分别创建它们，最后构建成该复杂对象。<br></br></li>
-<li>代理（Proxy）模式：为某对象提供一种代理以控制对该对象的访问。即客户端通过代理间接地访问该对象，从而限制、增强或修改该对象的一些特性。</li>
-<li>适配器（Adapter）模式：将一个类的接口转换成客户希望的另外一个接口，使得原本由于接口不兼容而不能一起工作的那些类能一起工作。</li>
-<li>桥接（Bridge）模式：将抽象与实现分离，使它们可以独立变化。它是用组合关系代替继承关系来实现，从而降低了抽象和实现这两个可变维度的耦合度。</li>
-<li>装饰（Decorator）模式：动态的给对象增加一些职责，即增加其额外的功能。</li>
-<li>外观（Facade）模式：为多个复杂的子系统提供一个一致的接口，使这些子系统更加容易被访问。</li>
-<li>享元（Flyweight）模式：运用共享技术来有效地支持大量细粒度对象的复用。</li>
-<li>组合（Composite）模式：将对象组合成树状层次结构，使用户对单个对象和组合对象具有一致的访问性。<br></br></li>
-<li>模板方法（TemplateMethod）模式：定义一个操作中的算法骨架，而将算法的一些步骤延迟到子类中，使得子类可以不改变该算法结构的情况下重定义该算法的某些特定步骤。</li>
-<li>策略（Strategy）模式：定义了一系列算法，并将每个算法封装起来，使它们可以相互替换，且算法的改变不会影响使用算法的客户。</li>
-<li>命令（Command）模式：将一个请求封装为一个对象，使发出请求的责任和执行请求的责任分割开。</li>
-<li>职责链（Chain of Responsibility）模式：把请求从链中的一个对象传到下一个对象，直到请求被响应为止。通过这种方式去除对象之间的耦合。</li>
-<li>状态（State）模式：允许一个对象在其内部状态发生改变时改变其行为能力。</li>
-<li>观察者（Observer）模式：多个对象间存在一对多关系，当一个对象发生改变时，把这种改变通知给其他多个对象，从而影响其他对象的行为。</li>
-<li>中介者（Mediator）模式：定义一个中介对象来简化原有对象之间的交互关系，降低系统中对象间的耦合度，使原有对象之间不必相互了解。</li>
-<li>迭代器（Iterator）模式：提供一种方法来顺序访问聚合对象中的一系列数据，而不暴露聚合对象的内部表示。</li>
-<li>访问者（Visitor）模式：在不改变集合元素的前提下，为一个集合中的每个元素提供多种访问方式，即每个元素有多个访问者对象访问。</li>
-<li>备忘录（Memento）模式：在不破坏封装性的前提下，获取并保存一个对象的内部状态，以便以后恢复它。</li>
-<li>解释器（Interpreter）模式：提供如何定义语言的文法，以及对语言句子的解释方法，即解释器。</li>
-</ul>
-<hr>
-<p><a target="_blank" rel="noopener" href="http://c.biancheng.net/view/8462.html">go</a><br> <br> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">E - Element（在集合中使用，因为集合中存放的是元素）</span><br><span class="line"></span><br><span class="line">T - Type （Java 类）</span><br><span class="line"></span><br><span class="line">K - Key （键）</span><br><span class="line"></span><br><span class="line">V - Value （值）</span><br><span class="line"></span><br><span class="line">N - Number （数值类型）</span><br><span class="line"></span><br><span class="line">? - 通配符，表示不确定的 Java 类型</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends T&gt; 有限定通配符，表示匹配 E 或者 E 的某个子类型。</span><br><span class="line">ArrayList&lt;?&gt; 无限定通配符。</span><br><span class="line"></span><br><span class="line">注：通配符限制，只能读，不能写。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Object 和这些标记符代表的 Java 类型有什么区别？</p>
+</blockquote>
+<p>Object 是所有类的根类，任何类的对象都可以设置给该 Object 引用变量，使用的时候可能需要进行类型强制转换， 但是使用了泛型 T、E 等这些标识符后，在实际使用之前类型就已经确定了，不需要在进行类型强制转换。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;? extends E&gt; ： 表示上界通配符， ？ 表示参数化的类型可能是所指定的类型，或者是此类型的子类。</span><br><span class="line">    在类型参数中使用extends 表示这个泛型中的参数必须是E或者E的子类，目的是：</span><br><span class="line">	a. 如果传入的类型不是 E 或者 E 的子类，编译不成功。</span><br><span class="line">    b. 泛型中可以使用 E 的方法，要不然还得强转成 E 才能使用。</span><br><span class="line"></span><br><span class="line">&lt;? super E&gt; ：表示下界通配符，表示参数化的类型可能是所指定的类型，或者是此类型的父类型，直至 Object。</span><br><span class="line">    在类型参数中使用 super 表示这个泛型中的参数必须是 E 或者是 E 的父类型。</span><br><span class="line">    a.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>T 和 ？的区别 ？</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">T 是一个 确定的 类型，通常用于泛型类和泛型方法的定义，？是一个 不确定 的类型，通常用于泛型方法的调用代码和形参，不能用于定义类和泛型方法。</span><br><span class="line"></span><br><span class="line">    以 List&lt;T&gt; list = new ArrayList&lt;T&gt;(); 为例，它代表指定集合元素只能是T类型。</span><br><span class="line">    而 List&lt;?&gt; list = new ArrayList&lt;?&gt;(); 说明的是集合元素可以是任意类型，这种没有意义，一般是方法中，只为了说明用法。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 使用T 来确保 泛型参数的一致性</span><br><span class="line">public &lt;T extends Number&gt; void test (List&lt;T&gt; dest, List&lt;T&gt; src)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 通配符是不确定的，所以不能保证两个List具有相同元素类型</span><br><span class="line">public void test(&lt;? extends Number&gt; dect, Lsit&lt;? extends Number&gt; src)</span><br></pre></td></tr></table></figure>
 
       
 
@@ -282,7 +244,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">javase</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">base</a>
         		</li>
       		
 		</ul>
@@ -294,7 +256,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
+        			<a href="/categories/javase//" class="article-tag-list-link color2">javase</a>
         		</li>
       		
 		</ul>
@@ -348,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2022/01/21/design-patterns/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2022/02/09/javaGenerics/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -362,18 +324,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/26/java-mind/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/09/javaReflection/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          java知识思维导图
+          Java 反射
         
       </div>
     </a>
   
   
-    <a href="/2019/09/25/start/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">start</div>
+    <a href="/2022/02/08/javaBaseDataType/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 八种基本数据类型及其包装类</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -500,7 +462,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">javase</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">base</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ioc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">xmind</a>
               </li>
             
             <div class="clearfix"></div>
