@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://longzhihua.github.io">
-  <title>start | 程序员杂记</title>
+  <title>Java 反射 | 程序员杂记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hello world！一切从这里开始…">
+  <meta name="description" content="什么是反射？  一般程序的功能指定是在编译期，代码编写好之后，也就是程序运行前（编译时）就已经固定了。比如A类方法 调用B类方法。而反射不一样，它是在程序运行期，而非编译时，动态的获取类型信息。比如接口信息、成员信息、方法信息、构造方法信息等。根据这些动态获取到的信息创建对象、访问&#x2F;修改成员、调用方法等。  怎么实现反射？  首先我们要知道，每个已加载的类在内存中都会有一份类信息，每个对象都有指">
 <meta property="og:type" content="article">
-<meta property="og:title" content="start">
-<meta property="og:url" content="http://longzhihua.github.io/2019/09/25/start/index.html">
+<meta property="og:title" content="Java 反射">
+<meta property="og:url" content="http://longzhihua.github.io/2022/02/09/javase/javaReflection/index.html">
 <meta property="og:site_name" content="程序员杂记">
-<meta property="og:description" content="hello world！一切从这里开始…">
+<meta property="og:description" content="什么是反射？  一般程序的功能指定是在编译期，代码编写好之后，也就是程序运行前（编译时）就已经固定了。比如A类方法 调用B类方法。而反射不一样，它是在程序运行期，而非编译时，动态的获取类型信息。比如接口信息、成员信息、方法信息、构造方法信息等。根据这些动态获取到的信息创建对象、访问&#x2F;修改成员、调用方法等。  怎么实现反射？  首先我们要知道，每个已加载的类在内存中都会有一份类信息，每个对象都有指">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-09-25T08:22:53.000Z">
-<meta property="article:modified_time" content="2022-01-27T06:24:44.281Z">
+<meta property="article:published_time" content="2022-02-09T07:14:27.000Z">
+<meta property="article:modified_time" content="2022-02-09T08:36:44.262Z">
 <meta property="article:author" content="longzh">
+<meta property="article:tag" content="base">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="程序员杂记" type="application/atom+xml">
@@ -168,43 +169,91 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-start" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-javase/javaReflection" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      start
+      Java 反射
     </h1>
   
 
         
-        <a href="/2019/09/25/start/" class="archive-article-date">
-  	<time datetime="2019-09-25T08:22:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-25</time>
+        <a href="/2022/02/09/javase/javaReflection/" class="archive-article-date">
+  	<time datetime="2022-02-09T07:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>hello world！一切从这里开始…</p>
+        <blockquote>
+<p>什么是反射？</p>
+</blockquote>
+<p>一般程序的功能指定是在编译期，代码编写好之后，也就是程序运行前（编译时）就已经固定了。比如A类方法 调用B类方法。<br>而反射不一样，它是在程序运行期，而非编译时，动态的获取类型信息。比如接口信息、成员信息、方法信息、构造方法信息等。根据这些动态获取到的信息创建对象、访问/修改成员、调用方法等。</p>
+<blockquote>
+<p>怎么实现反射？</p>
+</blockquote>
+<p>首先我们要知道，每个已加载的类在内存中都会有一份类信息，每个对象都有指向它所属类信息的引用地址。在java中，类信息对应的类就是 java.lang.Class 。注意不是小写的class（定义类的关键字）。所有类的根父类 Object<br>有个方法可以获取对象的Class对象。</p>
+<blockquote>
+<p>优缺点？</p>
+</blockquote>
+<p>优点：可以编写通用的、动态灵活的程序。 </p>
+<p>缺点：</p>
+<ul>
+<li><p>反射更容易出现运行时错误。使用显式的类和接口，编译器能帮我们做类型检查，减少错误。但使用反射，类型是运行时才知道的。</p>
+</li>
+<li><p>反射性能要低，在访问字段、方法前需要先检查Field、Method权限。</p>
+<p> 替代方案： 使用接口实现能获得同样的灵活性的情况下。尽量使用接口实现。</p>
+</li>
+</ul>
 <span id="more"></span>
-<h3 id="hexo-常用命令"><a href="#hexo-常用命令" class="headerlink" title="hexo 常用命令"></a><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000002632530">hexo 常用命令</a></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> ## 安装  </span><br><span class="line">npm install hexo -g</span><br><span class="line"> ## 升级  </span><br><span class="line">npm update hexo -g</span><br><span class="line"> ## 初始化</span><br><span class="line">hexo init</span><br><span class="line"></span><br><span class="line"># 简写命令</span><br><span class="line">## 新建文章</span><br><span class="line">hexo n &quot;我的博客&quot; == hexo new &quot;我的博客&quot;</span><br><span class="line">## 发布</span><br><span class="line">hexo p == hexo publish</span><br><span class="line">## 生成静态文件</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">## 启动服务预览</span><br><span class="line">hexo s == hexo server</span><br><span class="line">## 部署</span><br><span class="line">hexo d == hexo deploy</span><br><span class="line"></span><br><span class="line"># 服务器命令</span><br><span class="line">## Hexo 会监视文件变动并自动更新，您无须重启服务器。</span><br><span class="line">hexo server</span><br><span class="line">## 静态模式</span><br><span class="line">hexo server -s</span><br><span class="line">## 更改端口</span><br><span class="line">hexo server -p 5000</span><br><span class="line">##自定义 IP</span><br><span class="line">hexo server -i 192.168.1.1</span><br><span class="line">## 清除缓存 网页正常情况下可以忽略此条命令</span><br><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line"># 监视并生效文件改动</span><br><span class="line">## 使用 Hexo 生成静态文件快速而且简单</span><br><span class="line">hexo generate </span><br><span class="line">## 监视文件变动</span><br><span class="line">hexo generate --watch</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="npm-常用指令"><a href="#npm-常用指令" class="headerlink" title="npm 常用指令"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/PeunZhang/p/5553574.html">npm 常用指令</a></h3><h3 id="hexo-theme"><a href="#hexo-theme" class="headerlink" title="hexo theme"></a>hexo theme</h3><p><a target="_blank" rel="noopener" href="https://github.com/removeif/hexo-theme-icarus-removeif">removeif</a><br><a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">yilia</a></p>
-<h3 id="hexo-add-categories"><a href="#hexo-add-categories" class="headerlink" title="hexo add categories"></a><a target="_blank" rel="noopener" href="https://www.dazhuanlan.com/odinushuaia/topics/1138639">hexo add categories</a></h3><h3 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a>配置说明</h3><pre><code>yilia：
-    需要配置头像、昵称、个人简介，需要在_config.yml配置中添加：
-        #名称
-        author: longzh
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## Class是一个泛型类，有一个类型参数。</span><br><span class="line">public final native Class&lt;?&gt; getClass();</span><br></pre></td></tr></table></figure>
+<p>在获取Class对象之后，可以获取到关于类型的信息，主要包括名称信息、字段信息、方法信息、创建对象、构造方法和类型信息等。</p>
+<blockquote>
+<p>Class 主要的方法：</p>
+</blockquote>
+<ul>
+<li><p>获取名称信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 返回当前类名称</span><br><span class="line">public String getName();</span><br><span class="line"></span><br><span class="line">// 返回不带包名的类名</span><br><span class="line">public String getSimpleName();</span><br><span class="line"></span><br><span class="line">// 返回友好的类名</span><br><span class="line">public String getCanonicalName();</span><br><span class="line"></span><br><span class="line">// 返回包名</span><br><span class="line">public String getPackage();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取字段信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 返回所以的public字段，包括父类的，如果无，返回空数组。</span><br><span class="line">public Field[] getFields();</span><br><span class="line"></span><br><span class="line">// 返回本类声明的所有字段，包括非public 的，但不包含父类的。</span><br><span class="line">public Field[] getDeclaredFields();</span><br><span class="line"></span><br><span class="line">// 返回本类或父类指定名称的 public 的字段，找不到抛出异常 NosuchFieldException</span><br><span class="line">public Field getFields(String name);</span><br><span class="line"></span><br><span class="line">// 返回本类中声明的指定名称的字段，包括非public 的，但不包含父类的。找不到抛出异常 NosuchFieldException</span><br><span class="line">public Field getDeclaredFields(String name);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 返回所有的public 方法，包含父类的</span><br><span class="line">public Method[] getMethods();</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建对象和构造方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 该方法会调用类的默认构造方法（无参构造方法），如果调用的类无无参构造方法，则抛出异常InstantiationException。</span><br><span class="line">public T newInstance() throws InstantiationException, IllegalAccessException</span><br><span class="line"></span><br><span class="line">// 返回所有的 public 的构造方法</span><br><span class="line">public Constructor&lt;?&gt; getConstructors();</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类型检查和转换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 动态类型检查</span><br><span class="line">Class cls = Class.forName(&quot;java.util.ArrayList&quot;);</span><br><span class="line">if(cls.inInstance(list))&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">List list = Class.forName(&quot;java.util.ArrayList&quot;);</span><br><span class="line">if(list instanceof ArrayList)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Class 的类型信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 是否是数组</span><br><span class="line">public native boolean isArray();</span><br><span class="line"></span><br><span class="line">// 是否是基本类型</span><br><span class="line">public native boolean isPrimitive();</span><br><span class="line"></span><br><span class="line">// 是否是接口</span><br><span class="line">public native boolean isInterface();</span><br><span class="line"></span><br><span class="line">// 是否是枚举</span><br><span class="line">public boolean isEnum();</span><br><span class="line"></span><br><span class="line">// 是否是注解</span><br><span class="line">public boolean isAnnotation();</span><br><span class="line"></span><br><span class="line">// 是否是匿名内部类</span><br><span class="line">public boolean isAnonymousClass();</span><br><span class="line"></span><br><span class="line">// 是否是成员类（成员类定义在方法外，不是匿名类）</span><br><span class="line">public boolean isMemberClass();</span><br><span class="line"></span><br><span class="line">// 是否是本地类（本地类定义在方法内，不是匿名类）</span><br><span class="line">public boolean isLocalClass();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类的声明信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 获取修饰符，返回值可通过Modifier类进行解读</span><br><span class="line">public native int getModifiers();</span><br><span class="line"></span><br><span class="line">// 获取父类，Object 父类为 null</span><br><span class="line">public native Class&lt;? super T&gt; getSuperclass();</span><br><span class="line"></span><br><span class="line">// 对于类，为自己声明实现的所有接口。对于接口，为直接拓展的接口，不包含通过父类继承的</span><br><span class="line">public Class&lt;?&gt;[] getInterfaces()</span><br><span class="line"></span><br><span class="line">// 自己声明的注解</span><br><span class="line">public Annotation[] getDeclaredAnnotations()</span><br><span class="line"></span><br><span class="line">// 所有的注解</span><br><span class="line">public Annotation[] getAnnotations()</span><br><span class="line"></span><br><span class="line">// 获取或检查指定类型的注解</span><br><span class="line">public &lt;A extends Annotation&gt; A getAnnotation(Class&lt;A&gt; annotationClass)</span><br><span class="line">public boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类的加载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 返回与具有给定字符串名称的类或接口关联的Class对象，如果找不到指定名称的类会抛出ClassNotFoundException</span><br><span class="line">@CallerSensitive</span><br><span class="line">public static Class&lt;?&gt; forName(String className)</span><br><span class="line">            throws ClassNotFoundException &#123;</span><br><span class="line">    Class&lt;?&gt; caller = Reflection.getCallerClass();</span><br><span class="line">    return forName0(className, true, ClassLoader.getClassLoader(caller), caller);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 使用给定的类加载器返回与具有给定字符串名称的类或接口关联的Class对象。 给定类或接口的完全限定名称（与getName返回的格式相同），此方法尝试定位、加载和链接类或接口。 指定的类加载器用于加载类或接口。 如果参数loader为空，则通过引导类加载器加载该类。 仅当initialize参数为true并且之前未初始化该类时，才会初始化该类。</span><br><span class="line">@CallerSensitive</span><br><span class="line">public static Class&lt;?&gt; forName(String name, boolean initialize,</span><br><span class="line">                               ClassLoader loader)</span><br><span class="line">    throws ClassNotFoundException</span><br><span class="line">&#123;</span><br><span class="line">    Class&lt;?&gt; caller = null;</span><br><span class="line">    SecurityManager sm = System.getSecurityManager();</span><br><span class="line">    if (sm != null) &#123;</span><br><span class="line">        // Reflective call to get caller class is only needed if a security manager</span><br><span class="line">        // is present.  Avoid the overhead of making this call otherwise.</span><br><span class="line">        caller = Reflection.getCallerClass();</span><br><span class="line">        if (sun.misc.VM.isSystemDomainLoader(loader)) &#123;</span><br><span class="line">            ClassLoader ccl = ClassLoader.getClassLoader(caller);</span><br><span class="line">            if (!sun.misc.VM.isSystemDomainLoader(ccl)) &#123;</span><br><span class="line">                sm.checkPermission(</span><br><span class="line">                    SecurityConstants.GET_CLASSLOADER_PERMISSION);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return forName0(name, initialize, loader, caller);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反射与数组</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 获取数组元素类型</span><br><span class="line">public native Class&lt;?&gt; getComponentType();</span><br><span class="line"></span><br><span class="line">java.lang.reflect 中有一个针对数组的专门类 Array（注意不是java.util 中的Arrays），提供了对于数组的一些反射支持。</span><br><span class="line"></span><br><span class="line">注意：在Array类中，数组是用Object 而非 Object[] 表示，原因是为了方便处理多种类型的数组。比如：int[]、String[] 都不能与Object[] 互相转换，但是可以与Object 相互转换。</span><br><span class="line"></span><br><span class="line">int[] intArr = (int[]) Array.newInstance(int.class, 10);</span><br><span class="line">String[] strArr = (String[]) Array.newInstance(String.class, 10);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>反射与枚举</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 获取所有枚举常量</span><br><span class="line">public T[] getEnumConstants()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Field 类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 获取字段名称 </span><br><span class="line">public String getName()</span><br><span class="line"></span><br><span class="line">// 判断当前字段是否具有访问权限 </span><br><span class="line">public boolean isAccessible()</span><br><span class="line"></span><br><span class="line">// flag设置为ture表示忽略java的访问检查机制，以允许读写非public的字段。 </span><br><span class="line">public void setAccessible(boolean flag)</span><br><span class="line"></span><br><span class="line">// 获取指定对象obj中的该字段值 </span><br><span class="line">public Object get(Object obj)</span><br><span class="line"></span><br><span class="line">// 将指定对象obj中该字段的值设置为value </span><br><span class="line">public void set(Object obj, Object value)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Method 类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 获取方法名称 </span><br><span class="line">public String getName()</span><br><span class="line"></span><br><span class="line">//flag设置成ture表示忽略java的访问检查机制，以允许调用非public的方法。 </span><br><span class="line">public void setAccessible(boolean flag)</span><br><span class="line"></span><br><span class="line">// 在指定对象obj上调用Method代表的方法，传递参数列表为 args </span><br><span class="line">public Object invoke(Object obj, Object... args)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
-        #个人简介
-        subtitle: 简单写点代码，就混口饭吃。
-目录构建：
-    在 hexo g 生成静态页面之后，在 /public/categories/** 会生成对应对文件路径。
-
-文章置顶：
-    在文章中添加：top: 1 。
-</code></pre>
       
 
       
@@ -243,7 +292,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">base</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/javase//" class="article-tag-list-link color2">javase</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
       
@@ -292,7 +363,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2019/09/25/start/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://longzhihua.github.io/2022/02/09/javase/javaReflection/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -306,15 +377,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/01/21/javase/designPatterns/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2022/02/09/spring/springIocBase/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          设计模式 - 七大设计原则
+          spring ioc 的基础认识
         
       </div>
     </a>
   
+  
+    <a href="/2022/02/09/javase/javaGenerics/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java 泛型中E、T 、K、 V等的含义</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
